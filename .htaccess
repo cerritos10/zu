@@ -1,0 +1,37 @@
+# Servir contenidos de tipo text/plain o text/html usando la codificación UTF-8
+AddDefaultCharset utf-8
+
+# Forzar la codificación UTF-8 en varios tipos de archivos
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
+#Prevenir el hotlinking
+#RewriteEngine On
+#RewriteCond %{HTTP_REFERER} !^http://(.+\.)?webempresa\.com/ [NC]
+#RewriteCond %{HTTP_REFERER} !^$
+#RewriteRule .*\.(jpg|gif|bmp|png)$ http://www.home.com.gt/no_se_permite_hotlinking.jpg [L]
+
+
+#Impedir acceso a los archivos ocultos
+RewriteCond %{SCRIPT_FILENAME} -d [OR]
+RewriteCond %{SCRIPT_FILENAME} -f
+RewriteRule "(^|/)\." - [F]
+
+#Impedir que accedan a los archivos sensibles dentro del host
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+#Impedir que se pueda ver el listado de contenidos de un directorio
+Options All -Indexes
+
+# sirve archivos foo como archivos php
+AddType es/index.php .xxx
+
+#remueve extensiones
+Options +MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
