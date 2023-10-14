@@ -977,3 +977,60 @@ div.back.selected {
 .marco {
   padding: 10px;
 }
+
+.background-heart{
+  background: #0b1522;
+}
+
+.content-heart{
+  display: grid !important;
+  place-items: center !important;
+}
+
+.heart {
+  height: 150px;
+  width: 150px;
+  background-color: #f20044;
+  position: relative;
+  transform: rotate(45deg);
+  box-shadow: -20px 20px 150px #f20044;
+  animation: palpitar 0.5s linear infinite alternate;
+}
+
+.content-phrase{
+  position: fixed;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.phrase{
+  color: #fff
+}
+
+@keyframes palpitar {
+  0%{transform: rotate(45deg) scale(1.10);}
+  80%{transform: rotate(45deg) scale(1.0);}
+  100%{transform: rotate(45deg) scale(0.8);}
+}
+
+.heart::before{
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  background-color: #f20044;
+  right: 50%;
+  border-radius: 50%;
+  box-shadow: -20px 20px 150px #f20044;
+}
+
+.heart::after{
+  content: "";
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  background-color: #f20044;
+  top: -50%;
+  border-radius: 50%;
+  box-shadow: -20px 20px 150px #f20044;
+}
