@@ -1001,11 +1001,13 @@ div.back.selected {
   position: fixed;
   margin-bottom: 50px;
   text-align: center;
+  align-items: center;
 }
 
 .phrase{
   color: #fff;
   text-align: center;
+  align-items: center;
 }
 
 @keyframes palpitar {
