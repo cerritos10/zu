@@ -1004,7 +1004,8 @@ div.back.selected {
 }
 
 .phrase{
-  color: #fff
+  color: #fff;
+  text-align: center;
 }
 
 @keyframes palpitar {
